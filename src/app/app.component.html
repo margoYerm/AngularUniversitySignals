@@ -2,5 +2,7 @@
 <div class="counter-block">
   <p>Counter value: {{counter() }}</p>
   <!-- <p>Read only signal value: {{readOnlySignal() }}</p> -->
+  <p>Course title: {{ course().title }}</p>
+  <p>Courses: {{courses().join(", ")}}</p>
   <button class="btn" (click)="increment()">Increment</button>
 </div>

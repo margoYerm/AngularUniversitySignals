@@ -11,10 +11,13 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   counter = signal(0)
 
-  constructor() {}
+  constructor() {
+    const readOnlySignal = this.counter.asReadonly();
+  }
 
   increment() {
     //this.counter++;
-    this.counter.set(this.counter() + 1)
+    //this.counter.set(this.counter() + 1)
+    this.counter.update( val => val + 1 )
   }
  } 

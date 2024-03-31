@@ -1,0 +1,26 @@
+.counter-block {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  margin: 50px;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 16px;
+  background-color: darkblue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.btn:hover {
+  background-color: #000066;
+  cursor: pointer;
+}
+
+.btn:active {
+  background-color: #00002e;
+  cursor: pointer;
+}

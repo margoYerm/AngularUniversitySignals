@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -21,20 +21,24 @@ export class AppComponent {
     "Reactive Angular Course"
   ])
 
+  derivedCounter = computed(
+    () => {
+      const counter = this.counter();
+      return counter * 10;
+    }
+  )
+
   constructor() {
     const readOnlySignal = this.counter.asReadonly();
   }
 
-  increment() {
-    //this.counter++;
+  increment() {    
     //this.counter.set(this.counter() + 1)
-    this.counter.update( val => val + 1 );
-    //this.course().title = "Hello world!"; //wrong way
-    this.course.set({
+    this.counter.update( val => val + 1 );    
+    /*this.course.set({
       id: 1,
       title: "Hello world!",
-    })
-    //this.courses().push("Angular Core Deep Dive");//wrong way
-    this.courses.update(courses => [...courses, "Angular Core Deep Dive"])
+    })*/    
+    //this.courses.update(courses => [...courses, "Angular Core Deep Dive"])
   }
  } 

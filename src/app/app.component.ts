@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -24,18 +24,23 @@ export class AppComponent {
 
   derivedCounter = computed(
     () => { 
-      const counter = this.counter();
-      if (this.multiplier >= 10) {        
-        return counter * 10;
-      } else {
-        return 0;
-      }
-      
+      const counter = this.counter();             
+      return counter * 10; 
     }
   )
 
   constructor() {
-    const readOnlySignal = this.counter.asReadonly();
+    //const readOnlySignal = this.counter.asReadonly();
+    effect(() => {
+      const counterValue = this.counter();
+      const derivedCounterValue = this.derivedCounter();
+      //here can be request to the backend using an http call 
+      //and save some data in the DB
+      //you can save something to local storage
+      console.log(`counter: ${counterValue}; derived counter: ${derivedCounterValue}`);
+      //this.counter.update(val => val + 1) //we get error, we can't modify signals here
+
+    })
   }
 
   increment() {    

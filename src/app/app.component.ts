@@ -10,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   counter = signal(0);
+  multiplier: number = 0;
 
   course = signal({
     id: 1,
@@ -22,9 +23,14 @@ export class AppComponent {
   ])
 
   derivedCounter = computed(
-    () => {
+    () => { 
       const counter = this.counter();
-      return counter * 10;
+      if (this.multiplier >= 10) {        
+        return counter * 10;
+      } else {
+        return 0;
+      }
+      
     }
   )
 
@@ -41,4 +47,12 @@ export class AppComponent {
     })*/    
     //this.courses.update(courses => [...courses, "Angular Core Deep Dive"])
   }
+
+  incrementMultiplier() {
+    this.multiplier++;
+  }
+
+  
  } 
+
+ 

@@ -1,12 +1,9 @@
 
 <div class="counter-block">
-  <p>Counter value: {{counter() }}</p>
-  <!-- <p>Read only signal value: {{readOnlySignal() }}</p> -->
-  <!-- <p>Course title: {{ course().title }}</p>
-  <p>Courses: {{courses().join(", ")}}</p> -->
+  <p>Counter value: {{counterService.counter() }}</p>
+ 
   <p>Derived value: {{ derivedCounter() }}</p>
-  <p>Multiplier: {{ multiplier }}</p>
+  
   <button class="btn" (click)="increment()">Increment</button>
-  <button class="btn" (click)="incrementMultiplier()">++ Multiplier</button>
-  <button class="btn" (click)="onCleanup()">Cleanup</button>
+
 </div>

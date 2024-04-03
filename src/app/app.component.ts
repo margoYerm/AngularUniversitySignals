@@ -1,4 +1,4 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, EffectRef, computed, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -29,17 +29,18 @@ export class AppComponent {
     }
   )
 
-  constructor() {
-    //const readOnlySignal = this.counter.asReadonly();
-    effect(() => {
-      const counterValue = this.counter();
-      const derivedCounterValue = this.derivedCounter();
-      //here can be request to the backend using an http call 
-      //and save some data in the DB
-      //you can save something to local storage
-      console.log(`counter: ${counterValue}; derived counter: ${derivedCounterValue}`);
-      //this.counter.update(val => val + 1) //we get error, we can't modify signals here
+  effectRef: EffectRef;
 
+  constructor() {    
+    this.effectRef = effect((onCleanup) => {
+      onCleanup(() => {
+        console.log(`Cleanup occurred!`);
+      })
+      const counterValue = this.counter();
+      const derivedCounterValue = this.derivedCounter();      
+      console.log(`counter: ${counterValue}; derived counter: ${derivedCounterValue}`);
+    }, {
+      manualCleanup: true
     })
   }
 
@@ -57,6 +58,9 @@ export class AppComponent {
     this.multiplier++;
   }
 
+  onCleanup() {
+    this.effectRef.destroy()
+  }
   
  } 
 

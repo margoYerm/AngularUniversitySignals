@@ -6,7 +6,6 @@ import { CounterService } from './services/counter.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
-    CounterService
+    provideRouter(routes)    
   ]
 };

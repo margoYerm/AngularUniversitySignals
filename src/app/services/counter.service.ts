@@ -1,8 +1,8 @@
 import { Injectable, signal } from "@angular/core";
 
-Injectable({
+@Injectable({
   providedIn: "root"
-});
+})
 
 export class CounterService {
   private counterSignal = signal(0); 

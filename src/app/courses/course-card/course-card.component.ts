@@ -2,8 +2,10 @@ import {
   Component, computed, effect,
   EventEmitter, input,
   Input, 
+  OnChanges, 
   OnInit, 
-  Output, 
+  Output,
+  SimpleChanges, 
 } from '@angular/core';
 import {Course} from '../../model/course';
 import {CoursesService} from '../courses.service';
@@ -22,7 +24,7 @@ import {NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
   standalone: true
 
 })
-export class CourseCardComponent implements OnInit {
+export class CourseCardComponent implements OnInit, OnChanges {
 
   //@Input() course!: Course;
   course = input<Course>();  
@@ -31,11 +33,9 @@ export class CourseCardComponent implements OnInit {
   courseEmitter = new EventEmitter<Course>();
 
   constructor() {
-
-    /*effect(() => {
-      console.log(`New course value: `, this.course);
-    });*/
-
+    effect(() => {
+      console.log(`New course value: `, this.course());
+    });
   }  
 
   ngOnInit() {
@@ -43,6 +43,13 @@ export class CourseCardComponent implements OnInit {
       const course = this.course();
       return course?.description + '('+ course?.category + ')'
     })
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    /*// using ngOnChanges with @Input() course!: Course;
+    if (changes['course']) {
+      console.log(`New course value: `, this.course)
+    }*/
   }
 
   onTitleChanged(newTitle: string) {

@@ -27,7 +27,11 @@ import {NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
 export class CourseCardComponent implements OnInit, OnChanges {
 
   //@Input() course!: Course;
-  course = input<Course>();  
+  //course = input.required<Course>();  
+  course = input<Course>(null!, {
+    alias: "tutorial",
+    //transform: (val) => {}
+  });
   
   @Output('courseChanged')
   courseEmitter = new EventEmitter<Course>();

@@ -1,3 +1,9 @@
+<div class="top-menu">
+
+  <img class="logo"
+       src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
+
+</div>
 
 <div class="counter-block">
   <p>Counter value: {{counterService.counter() }}</p>
@@ -5,5 +11,28 @@
   <p>Derived value: {{ derivedCounter() }}</p>
   
   <button class="btn" (click)="increment()">Increment</button>
+
+</div>
+
+
+<div>
+
+  <h4> Welcome to the Angular Deep Dive Course</h4>
+
+
+  <div class="courses">
+
+    @for(course of courses; track course.id)  {
+
+      <course-card [course]="course">
+
+        <course-image [src]="course.iconUrl" />
+
+      </course-card>
+
+    }
+
+  </div>
+
 
 </div>

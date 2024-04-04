@@ -25,3 +25,21 @@
   background-color: #00002e;
   cursor: pointer;
 }
+
+.top-menu {
+  background: #1976d2;
+  padding: 2px 15px;
+}
+
+.logo {
+max-height: 55px;
+}
+
+.courses {
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+course-card:hover {  
+  box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
+}
